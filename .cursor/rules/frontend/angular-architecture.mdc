@@ -1,0 +1,48 @@
+---
+description: Code organization and View module layering for Angular + TypeScript applications
+globs:
+  - "**/*.{ts,html}"
+---
+
+# Architecture & Code Organization (Angular)
+
+For the full View module layer model, tier patterns, folder layout, naming conventions, and examples, see `.cursor/docs/frontend/angular-module-architecture.md`.
+
+## Pattern Reuse
+
+- When creating a new store, service, or resource, examine sibling Views with the same suffix to match folder placement and API contract
+- When adding to an extensible pattern (port tokens, resources, stores), name and scope new artifacts at the same category level as siblings, not narrowly for a single use case
+- Prefer reusing existing patterns and registration points (`InjectionToken` ports, route `providers`, store command methods) over inventing new ones. Check how similar Views are already wired before creating new infrastructure
+
+## Module Layering
+
+- Before adding code to a shared service or component, verify the layering by checking existing imports. Ensure the change respects the dependency direction: `ui → store → infrastructure → domain → api`
+- `ui/` must not import `dto/` or `HttpClient` directly — go through the store and its resource port
+- Declare port interfaces and their `InjectionToken`s in `api/`; implement them in `infrastructure/resources/`
+- Bind ports in the route's `providers` array (or the View component's `providers`), never inside the component that consumes them
+
+## Store Responsibility
+
+- Do not add new methods to an existing store based on a superficial name match. Read the store's existing signals and callers to verify its actual responsibility
+- Do not couple UI components to an implementation detail (e.g. request URL, mock flag) when a stable port (`FOO_RESOURCE`) exists
+- Expose readonly signals to the UI; change state only through explicit command methods on the store
+
+## Angular Idioms
+
+- Components are standalone — declare dependencies in `imports`, never create an `NgModule`
+- Use `inject()` rather than constructor parameter injection in new code
+- Set `changeDetection: ChangeDetectionStrategy.OnPush` on new components
+- The app is zoneless (`zone.js` is not installed) — hold component and store state in signals; mutating plain fields will not reliably update the view
+- Use `input()` / `output()` signal APIs, not the `@Input()` / `@Output()` decorators
+- Use built-in control flow (`@if`, `@for` with `track`, `@switch`) in templates, not `*ngIf` / `*ngFor`
+- Prefer signals (`signal`, `computed`, `resource`) over `BehaviorSubject`. Use RxJS for event streams, debouncing, and cancellation, then bridge with `toSignal()`
+- Clean up subscriptions with `takeUntilDestroyed()` or the async pipe
+- Provide View-scoped services on the View component or route; reserve `providedIn: 'root'` for genuinely app-wide services
+- Navigate with `routerLink` / `Router.navigate` — never `window.location`
+- No side effects in getters or template expressions; use event handlers, `effect()`, or store methods
+
+## Styling
+
+- Use Tailwind utility classes. Component `.css` files are for cases utilities cannot cover
+- Watch the per-component style budget in `angular.json` (4 kB warning / 8 kB error)
+- Global styles belong in `src/styles.css` only when they cannot live in component classes

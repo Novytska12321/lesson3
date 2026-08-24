@@ -1,0 +1,6 @@
+---
+description: Enforce local project directory for Cursor AI plan files
+globs: *
+---
+
+When generating plan files in PLAN mode (e.g., *.plan.md), always save them inside the project's local directory at `.cursor/plans/` instead of the global user directory (~/.cursor/plans/).
