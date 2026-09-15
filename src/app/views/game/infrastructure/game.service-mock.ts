@@ -1,3 +1,5 @@
+import { Observable, of } from "rxjs";
+import { delay } from "rxjs/operators";
 import { GameAnswer } from "../api/game-answer";
 import { GameQuestion } from "../api/game-question";
 import { GameService } from "../api/game.service";
@@ -14,6 +16,10 @@ export class GameServiceMock implements GameService {
 
     getQuestion() {
         return { ...this.question };
+    }
+
+    selectQuestion(): Observable<GameQuestion> {
+        return of(this.question).pipe(delay(5000));
     }
 
     updateQuestionText(text: string) {

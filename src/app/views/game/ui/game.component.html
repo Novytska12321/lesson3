@@ -1,15 +1,19 @@
 <h2>Game</h2>
 
-<article>
-    <h3>{{ question.text }}</h3>
-    <ul>
-        @for (answer of question.answers; track answer.id) {
+@if (question) {
+    <article>
+        <h3>{{ question.text }}</h3>
+        <ul>
+            @for (answer of question.answers; track answer.id) {
             <li>
                 <label>
                     <input type="radio" name="answer" [value]="answer.id" />
                     {{ answer.text }}
                 </label>
-            </li>    
-        } 
-    </ul>
-</article>
+            </li>
+            }
+        </ul>
+    </article>
+} @else {
+    loading...
+}

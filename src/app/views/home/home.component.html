@@ -1,1 +1,114 @@
-<p>home works!</p>
+<section
+  class="relative mx-auto flex min-h-dvh w-full max-w-[430px] flex-col overflow-hidden bg-[linear-gradient(154deg,#3550dc_55%,#27e9f7_100%)] font-sans"
+>
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <span class="absolute -left-3 -top-6 size-[70px] rounded-full bg-[#4d7dff]/55"></span>
+    <span class="absolute left-[81px] top-9 size-[50px] rounded-full bg-[#3d6af0]/45"></span>
+    <span class="absolute left-[226px] top-14 size-[30px] rounded-full bg-[#5b8bff]/40"></span>
+    <span class="absolute -right-5 top-[70px] size-20 rounded-full bg-[#2f63f0]/50"></span>
+    <span class="absolute right-2 -top-3.5 size-12 rounded-full bg-[#6ea0ff]/35"></span>
+    <span class="absolute left-[51px] top-44 size-[25px] rounded-full bg-white/25"></span>
+    <span class="absolute right-[57px] top-40 size-[30px] rounded-full bg-white/20"></span>
+  </div>
+
+  <header class="relative z-10 flex items-start justify-between px-6 pt-8">
+    <span class="mt-5 flex w-9 flex-col items-start gap-1.5" aria-hidden="true">
+      <span class="h-1 w-5 rounded-full bg-white"></span>
+      <span class="h-1 w-9 rounded-full bg-white"></span>
+      <span class="h-1 w-5 rounded-full bg-white"></span>
+    </span>
+
+    <img
+      src="/assets/home/logo-q.svg"
+      alt="Quizy"
+      width="107"
+      height="116"
+      class="h-[116px] w-[107px]"
+    />
+
+    <img
+      src="/assets/home/avatar.png"
+      alt=""
+      width="50"
+      height="50"
+      class="mt-3 size-[50px] rounded-full object-cover"
+    />
+  </header>
+
+  <h1
+    class="relative z-10 px-7 pt-2 text-2xl font-semibold leading-7 text-white drop-shadow-[0_4px_4px_rgba(255,255,255,0.25)]"
+  >
+  Are you ready to test your knowledge?
+  </h1>
+
+  <div
+    class="relative z-10 mt-8 flex flex-1 flex-col rounded-t-[3rem] bg-white px-8 pb-10 pt-8"
+  >
+    <div class="pointer-events-none absolute -right-10 top-28" aria-hidden="true">
+      <span
+        class="absolute top-0 right-0 h-[41px] w-[150px] rotate-[-64.5deg] rounded-full bg-[linear-gradient(94deg,#f7e227,#ffc633_2%,#f3f727)]"
+      ></span>
+      <span
+        class="absolute top-24 right-0 h-[41px] w-[150px] rotate-[-64.5deg] rounded-full bg-[linear-gradient(94deg,#f7e227,#ffc633_2%,#f3f727)]"
+      ></span>
+      <span
+        class="absolute top-48 right-0 h-[41px] w-[150px] rotate-[-64.5deg] rounded-full bg-[linear-gradient(94deg,#f7e227,#ffc633_2%,#f3f727)]"
+      ></span>
+    </div>
+
+    <h2 class="text-xl font-semibold text-[#001894]">Todays Quiz</h2>
+
+    <div class="mt-5 flex flex-col gap-6">
+      <a
+        routerLink="/game"
+        class="relative flex h-[110px] items-center overflow-hidden rounded-[30px] border-2 border-[#001894] bg-[linear-gradient(128deg,#2cb2ed_0%,#3550dc_85%)] px-[15px] shadow-[4px_4px_4px_rgba(0,0,0,0.25),-4px_-4px_4px_rgba(0,0,0,0.25)]"
+      >
+        <span class="pointer-events-none absolute -left-12 top-[15px] size-20 rounded-full bg-white/15"></span>
+        <span class="pointer-events-none absolute -right-8 top-[15px] size-20 rounded-full bg-white/15"></span>
+        <img
+          src="/assets/home/easy-quiz.png"
+          alt=""
+          width="80"
+          height="80"
+          class="relative z-10 size-20 rounded-[30px] object-cover"
+        />
+        <span class="relative z-10 ml-3.5 flex flex-col">
+          <span class="text-xl font-medium text-white">Easy level</span>
+          <span class="text-base font-normal text-white/85">10 questions</span>
+        </span>
+      </a>
+
+      <a
+        routerLink="/game"
+        class="relative flex h-[110px] items-center overflow-hidden rounded-[30px] bg-[linear-gradient(128deg,#2cb2ed_0%,#3550dc_85%)] px-[15px] shadow-[4px_4px_4px_rgba(0,0,0,0.25),-4px_-4px_4px_rgba(0,0,0,0.25)]"
+      >
+        <span class="pointer-events-none absolute -left-12 top-[15px] size-20 rounded-full bg-white/15"></span>
+        <span class="pointer-events-none absolute -right-8 top-[15px] size-20 rounded-full bg-white/15"></span>
+        <img
+          src="/assets/home/hard-quiz.png"
+          alt=""
+          width="80"
+          height="80"
+          class="relative z-10 size-20 rounded-[30px] object-cover"
+        />
+        <span class="relative z-10 ml-3.5 flex flex-col">
+          <span class="text-xl font-medium text-white">Hard level</span>
+          <span class="text-base font-normal text-white/85">10 questions</span>
+        </span>
+      </a>
+    </div>
+
+    <div class="mt-auto flex justify-center pt-12">
+      <a
+        routerLink="/game"
+        class="flex h-20 w-[260px] items-center justify-center rounded-[55px] border border-solid border-[#2e9ce9]"
+      >
+        <span
+          class="flex h-[60px] w-[240px] items-center justify-center rounded-[53px] bg-gradient-to-b from-[#2cb2ed] from-[15%] to-[#3550dc] text-2xl font-medium text-white shadow-[4px_4px_15px_rgba(255,255,255,0.25),-4px_-4px_15px_rgba(255,255,255,0.25)]"
+        >
+          Let’s Play !
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
