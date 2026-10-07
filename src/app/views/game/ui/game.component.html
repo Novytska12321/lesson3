@@ -1,19 +1,157 @@
-<h2>Game</h2>
+<section
+  class="relative mx-auto flex min-h-dvh w-full flex-col overflow-x-hidden bg-[linear-gradient(160deg,#3550DC_0%,#3550DC_62%,#2CB2ED_100%)]"
+>
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <span class="absolute -left-3 -top-6 size-[70px] rounded-full bg-[#5b7cf0]/45"></span>
+    <span class="absolute left-[18%] top-7 size-[50px] rounded-full bg-[#6d8ef5]/40"></span>
+    <span class="absolute left-[56%] top-12 size-[30px] rounded-full bg-white/20"></span>
+    <span class="absolute -right-3 -top-3 size-12 rounded-full bg-[#7eb0ff]/35"></span>
+    <span class="absolute -right-5 top-16 size-20 rounded-full bg-[#2746c4]/50"></span>
+    <span class="absolute left-[10%] top-[20%] size-[25px] rounded-full bg-white/25"></span>
+    <span class="absolute right-[12%] top-[18%] size-[30px] rounded-full bg-white/20"></span>
+    <span class="absolute -left-[28%] top-[42%] size-[280px] rounded-full bg-[#7eb6ff]/20"></span>
+    <span class="absolute -right-4 top-[32%] h-[440px] w-12 rounded-full bg-cyan-300/25"></span>
+    <span class="absolute -bottom-16 left-0 size-[390px] rounded-full bg-white/10"></span>
+  </div>
 
-@if (question) {
-    <article>
-        <h3>{{ question.text }}</h3>
-        <ul>
-            @for (answer of question.answers; track answer.id) {
-            <li>
-                <label>
-                    <input type="radio" name="answer" [value]="answer.id" />
-                    {{ answer.text }}
-                </label>
-            </li>
-            }
-        </ul>
+  <header class="relative z-10 px-6 pt-8">
+    <div class="flex items-start justify-between">
+      <a
+        routerLink="/home"
+        aria-label="Back"
+        class="mt-1 inline-flex size-8 items-center justify-center text-white"
+      >
+        <svg width="12" height="20" viewBox="0 0 12 20" fill="none" aria-hidden="true">
+          <path
+            d="M10 2L2 10l8 8"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+
+      <img
+        src="assets/home/avatar.png"
+        alt=""
+        width="50"
+        height="50"
+        class="mt-8 size-[50px] rounded-full object-cover"
+      />
+    </div>
+
+    <img
+      src="assets/home/logo-q.svg"
+      alt="Quizy"
+      width="107"
+      height="116"
+      class="pointer-events-none absolute left-1/2 top-5 h-[116px] w-[107px] -translate-x-1/2"
+    />
+
+    <span class="relative z-10 mt-3 flex w-9 flex-col gap-[6px]" aria-hidden="true">
+      <span class="h-1 w-5 rounded-full bg-white"></span>
+      <span class="h-1 w-9 rounded-full bg-white"></span>
+      <span class="ml-4 h-1 w-5 rounded-full bg-white"></span>
+    </span>
+  </header>
+
+  <h1 class="relative z-20 mt-4 px-6 text-center text-xl font-semibold leading-snug text-white">
+    Choose One Correct Option Carefully
+  </h1>
+
+  <div class="relative z-10 mx-auto mt-5 w-full max-w-[430px] px-4">
+    <div
+      class="absolute inset-x-12 -top-3 bottom-8 rounded-[10px] border-t border-[#001894]/50 bg-[#2b46c9]"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="absolute inset-x-7 -top-1.5 bottom-4 rounded-[10px] border-t border-[#001894]/50 bg-[#314ed4]"
+      aria-hidden="true"
+    ></div>
+
+    <article
+      class="relative rounded-[10px] border-t border-[#001894]/50 bg-[linear-gradient(150deg,#3550DC_55%,#2CB2ED_140%)] px-5 pb-6 pt-5 shadow-[0_4px_2px_rgba(0,0,0,0.25)]"
+    >
+      <div class="pointer-events-none absolute inset-x-0 top-0 h-16 overflow-hidden" aria-hidden="true">
+        <span class="absolute -top-10 left-[-8%] h-24 w-[116%] rounded-[50%] bg-[#9fd8ff]/35"></span>
+      </div>
+
+      @if (question) {
+        <p class="relative text-center text-xl font-normal text-[#001894]">Question: 1/10</p>
+        <h2 class="relative mt-1 text-center text-xl font-medium leading-snug text-white">
+          {{ question.text }}
+        </h2>
+
+        <div class="relative mt-5 grid grid-cols-2 gap-x-3 gap-y-3.5">
+          @for (answer of question.answers; track answer.id) {
+            <label class="relative block min-w-0 cursor-pointer">
+              <input
+                type="radio"
+                name="answer"
+                class="peer sr-only"
+                [value]="answer.id"
+              />
+              <span
+                class="relative flex h-[84px] items-center justify-center rounded-[18px] bg-[#3d62e8] px-2 text-center text-lg font-medium leading-tight text-white shadow-[0_4px_4px_rgba(0,0,0,0.25)] peer-checked:bg-[#FFC633] peer-checked:text-[#001894]"
+              >
+                {{ answer.text }}
+                <span
+                  class="absolute -bottom-1.5 right-5 size-[18px] rotate-45 rounded-[3px] bg-inherit"
+                ></span>
+              </span>
+            </label>
+          }
+        </div>
+      } @else {
+        <p class="relative py-16 text-center text-xl font-medium text-white">Loading...</p>
+      }
     </article>
-} @else {
-    loading...
-}
+  </div>
+
+  <div class="relative z-10 mx-auto mt-auto h-[200px] w-full max-w-[430px]">
+    <div
+      class="absolute right-[-28px] top-8 flex h-[150px] w-[158px] items-start overflow-hidden rounded-[15px] bg-[linear-gradient(140deg,#3550DC_70%,#2CB2ED_100%)] pl-3 pt-2 shadow-[4px_0_4px_rgba(0,0,0,0.25)]"
+      aria-hidden="true"
+    >
+      <span class="text-[90px] font-extrabold leading-none text-[#001894]">3</span>
+      <span
+        class="-ml-1 mt-3 rotate-[29deg] bg-[linear-gradient(186deg,#ff3399_0%,#ff9c65_40%,#ff0000_80%)] bg-clip-text text-[96px] font-extrabold leading-none text-transparent"
+        >?</span
+      >
+    </div>
+
+    <div
+      class="absolute left-[34%] top-7 flex h-[150px] w-[154px] items-start overflow-hidden rounded-[15px] bg-[linear-gradient(145deg,#3a58e0_40%,#3550DC_100%)] pl-4 pt-2 shadow-[4px_0_4px_rgba(0,0,0,0.2)]"
+      aria-hidden="true"
+    >
+      <span class="text-[90px] font-extrabold leading-none text-[#001894]">2</span>
+      <span
+        class="-ml-2 mt-2 rotate-[30deg] bg-[linear-gradient(186deg,#FFC633_0%,#FFB800_50%,#F7E227_100%)] bg-clip-text text-[96px] font-extrabold leading-none text-transparent"
+        >?</span
+      >
+    </div>
+
+    <div
+      class="absolute left-3 top-1 flex h-[180px] w-[180px] items-start overflow-hidden rounded-[18px] bg-[linear-gradient(160deg,#3d63ee_0%,#3550DC_70%)] pl-6 pt-4 shadow-[4px_0_6px_rgba(0,0,0,0.25)]"
+      aria-hidden="true"
+    >
+      <span class="text-[96px] font-extrabold leading-none text-[#001894]">1</span>
+      <span
+        class="-ml-1 mt-3 rotate-[31deg] bg-[linear-gradient(186deg,#FFC633_0%,#FFB800_45%,#FDE031_100%)] bg-clip-text text-[104px] font-extrabold leading-none text-transparent"
+        >?</span
+      >
+    </div>
+
+    <button
+      type="button"
+      class="absolute bottom-6 right-4 z-20 flex h-[50px] w-20 items-center justify-center rounded-full border border-[#2E9CE9] bg-transparent"
+    >
+      <span
+        class="flex h-[35px] items-center justify-center rounded-[15px] bg-[linear-gradient(146deg,#3550DC_30%,#2CB2ED_100%)] px-[15px] text-base font-medium text-white"
+      >
+        Next
+      </span>
+    </button>
+  </div>
+</section>

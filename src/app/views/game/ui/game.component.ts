@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { GameService } from '../api/game.service';
 import { gameProviders } from '../game.providers';
 import { GameQuestion } from '../api/game-question';
@@ -6,7 +7,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-game',
-  imports: [],
+  imports: [RouterLink],
   providers: [...gameProviders],
   templateUrl: './game.component.html',
   styleUrl: './game.component.css',
